@@ -115,7 +115,7 @@ const createLecture = async (req, res) => {
     }
 
     // Upload image to Cloudinary
-    const imageUrl = await uploadOnCloudinary(req.file.path);
+    const imageUrl = await uploadOnCloudinary(req.file.buffer);
 
     // Extract YouTube ID from video link
     const youtubeId = extractYouTubeId(videoLink);
@@ -193,7 +193,7 @@ const updateLecture = async (req, res) => {
 
     // Update image if new file is uploaded
     if (req.file) {
-      const imageUrl = await uploadOnCloudinary(req.file.path);
+      const imageUrl = await uploadOnCloudinary(req.file.buffer);
       lecture.image = imageUrl;
     }
 

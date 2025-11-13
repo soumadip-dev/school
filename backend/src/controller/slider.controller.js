@@ -39,7 +39,7 @@ export const addSliderImage = async (req, res) => {
     }
 
     // Upload image to Cloudinary
-    const imageUrl = await uploadOnCloudinary(req.file.path);
+    const imageUrl = await uploadOnCloudinary(req.file.buffer);
 
     // Create new slider image
     const newSlider = await Slider.create({
@@ -147,7 +147,7 @@ export const updateSliderImage = async (req, res) => {
 
     // Handle image update if new file is provided
     if (req.file) {
-      updateData.image = await uploadOnCloudinary(req.file.path);
+      updateData.image = await uploadOnCloudinary(req.file.buffer);
     }
 
     const updatedSlider = await Slider.findByIdAndUpdate(sliderId, updateData, {
