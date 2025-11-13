@@ -13,7 +13,7 @@ import bcrypt from 'bcryptjs';
 import { isValidEmail, isStrongPassword } from '../utils/validation.util.js';
 import uploadOnCloudinary from '../config/cloudinary.config.js';
 import { getUserWithRoles } from '../utils/userHelpers.js';
-import generateMailOptions from '../utils/mailTemplates.js';
+import generateMailOptions from '../utils/mailTemplates..js';
 import transporter from '../config/nodemailer.config.js';
 
 //* Controller for registering a user
