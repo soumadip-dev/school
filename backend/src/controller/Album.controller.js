@@ -232,7 +232,7 @@ const uploadPhotos = async (req, res) => {
     const { batch, role } = await getUserBatchInfo(userId);
 
     // Upload all photos to Cloudinary
-    const uploadPromises = files.map(file => uploadOnCloudinary(file.path));
+    const uploadPromises = files.map(file => uploadOnCloudinary(file.buffer));
     const imageUrls = await Promise.all(uploadPromises);
 
     // Create photo documents
