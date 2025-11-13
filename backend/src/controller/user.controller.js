@@ -13,7 +13,7 @@ import bcrypt from 'bcryptjs';
 import { isValidEmail, isStrongPassword } from '../utils/validation.util.js';
 import uploadOnCloudinary from '../config/cloudinary.config.js';
 import { getUserWithRoles } from '../utils/userHelpers.js';
-import generateMailOptions from '../utils/mailTemplates..js';
+import generateMailOptions from '../utils/mailTemplates.js';
 import transporter from '../config/nodemailer.config.js';
 
 //* Controller for registering a user
@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
 
     // Get profile picture from request file
     let image;
-    if (req.file) {
+    if (req.file?.path) {
       image = await uploadOnCloudinary(req.file.path);
     }
 
@@ -318,7 +318,7 @@ const updateUserProfile = async (req, res) => {
     ).select('-password');
 
     // Update profile picture if provided
-    if (req.file) {
+    if (req.file?.path) {
       const image = await uploadOnCloudinary(req.file.path);
       updatedUser.profilepic = image;
       await updatedUser.save();
