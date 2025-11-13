@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { ENV } from './config/env.config.js';
+
 import auth_routes from './routes/user.routes.js';
 import blog_routes from './routes/blog.routes.js';
 import album_routes from './routes/album.routes.js';
@@ -17,12 +18,18 @@ const app = express();
 //* Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(
   cors({
     origin: 'https://school-blue-six.vercel.app',
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+// Allow preflight
+app.options('*', cors());
+
 app.use(cookieParser());
 
 //* Root Route
