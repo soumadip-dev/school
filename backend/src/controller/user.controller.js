@@ -41,8 +41,9 @@ const registerUser = async (req, res) => {
 
     // Get profile picture from request file
     let image;
-    if (req.file?.path) {
-      image = await uploadOnCloudinary(req.file.path);
+
+    if (req.file?.buffer) {
+      image = await uploadOnCloudinary(req.file.buffer);
     }
 
     // Check if email is valid
@@ -318,8 +319,8 @@ const updateUserProfile = async (req, res) => {
     ).select('-password');
 
     // Update profile picture if provided
-    if (req.file?.path) {
-      const image = await uploadOnCloudinary(req.file.path);
+    if (req.file?.buffer) {
+      const image = await uploadOnCloudinary(req.file.buffer);
       updatedUser.profilepic = image;
       await updatedUser.save();
     }
