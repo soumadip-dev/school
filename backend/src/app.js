@@ -27,8 +27,8 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
-// Allow preflight
-app.options('*', cors());
+
+app.options('/*', cors());
 
 app.use(cookieParser());
 
