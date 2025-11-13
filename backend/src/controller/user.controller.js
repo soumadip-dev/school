@@ -134,7 +134,7 @@ const registerUser = async (req, res) => {
     // Store JWT token in cookie
     const cookieOptions = {
       httpOnly: true,
-      sameSite: none,
+      sameSite: 'none',
       secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     };
