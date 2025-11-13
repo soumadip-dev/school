@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ENV.FRONTEND_URL,
+    origin: 'https://school-blue-six.vercel.app',
     credentials: true,
   })
 );
@@ -38,6 +38,5 @@ app.use('/api/slider', slider_routes);
 app.use('/api/committee', committee_routes);
 app.use('/api/lecture', lecture_routes);
 app.use('/api/discussion', discussion_routes);
-
 
 export default app;
